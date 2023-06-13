@@ -51,5 +51,5 @@ public class Usuario implements Serializable {
     @Column(name = "fechaUltLog")
     @Temporal(TemporalType.DATE)
     private Date fechaUltLog;
-    
+
 }
