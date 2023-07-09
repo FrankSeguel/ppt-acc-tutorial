@@ -50,3 +50,7 @@ Installed:
 [JMeter](https://jmeter.apache.org/download_jmeter.cgi)
 
 Abrir el Archivo jmeter/ppt-acc-tutorial.jmx
+
+##### SWAGGER
+
+http://localhost:8080/ppt-acc-tutorial/swagger-ui/index.html
