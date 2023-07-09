@@ -26,7 +26,7 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Usuario implements Serializable {
 
     @Id
-    @Column(name = "uuid")
+    @Column(name = "ID")
     private String id;
 
     @Column(name = "usuario")

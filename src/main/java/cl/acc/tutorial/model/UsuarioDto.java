@@ -1,5 +1,6 @@
 package cl.acc.tutorial.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,7 @@ public class UsuarioDto {
 
     private String email;
 
+    @JsonFormat(pattern = "yyyy-mm-dd", timezone = "GMT-4")
     private Date fechaNac;
 
 }

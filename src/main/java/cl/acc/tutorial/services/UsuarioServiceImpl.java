@@ -4,6 +4,7 @@ import cl.acc.tutorial.entity.Usuario;
 import cl.acc.tutorial.model.UsuarioDto;
 import cl.acc.tutorial.repository.UsuarioRepository;
 import com.github.dozermapper.core.Mapper;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -28,10 +29,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioDto crearUsuario(UsuarioDto usuario) {
         log.debug("UsuarioServiceImpl - crearUsuario : " + usuario.toString());
         Usuario userEntity = new Usuario();
-        mapper.map( usuario, userEntity);
-        log.debug("UsuarioServiceImpl - userEntity : " + userEntity.toString());
+        mapper.map(usuario, userEntity);
+
+        userEntity.setPassword("123456");
+        userEntity.setFechaUltLog(new Date());
+        log.info("UsuarioServiceImpl - userEntity : " + userEntity.toString());
         UsuarioRepository.save(userEntity);
-        mapper.map( userEntity, usuario);
+        mapper.map(userEntity, usuario);
 
         log.debug("UsuarioServiceImpl - usuario : " + usuario.toString());
         return usuario;
@@ -58,19 +62,19 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<UsuarioDto> listarUsuario() {
         log.debug("UsuarioServiceImpl - listarUsuario : ");
         List<Usuario> listaEntity = UsuarioRepository.findAll();
-        
+
         return listaEntity.stream()
                 .map(item -> listUserDTO(item))
                 .collect(Collectors.toList());
     }
 
     private UsuarioDto listUserDTO(Usuario entity) {
-        
-        log.debug("UsuarioServiceImpl - listUserDTO : " + entity.toString() );
+
+        log.debug("UsuarioServiceImpl - listUserDTO : " + entity.toString());
         UsuarioDto userDto = new UsuarioDto();
         mapper.map(entity, userDto);
-        
-        log.debug("UsuarioServiceImpl - userDto : " + userDto.toString() );
+
+        log.debug("UsuarioServiceImpl - userDto : " + userDto.toString());
         return userDto;
     }
 }
