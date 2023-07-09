@@ -23,7 +23,7 @@ git checkout feature/HelloWorld!
 
 ##### Build 
 ```
-mvn clean package install .
+mvn clean package install
 ```
 ##### Run JAVA
 ```
