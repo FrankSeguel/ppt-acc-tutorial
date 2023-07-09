@@ -1,19 +1,15 @@
-Ejemplo de Hello World 
+# Ejemplo de Hello World 
 
 [SpringBoot](http://projects.spring.io/spring-boot/)
-[Docker](https://www.docker.com/)
 
 #### Prerequisite 
 
-Installed:   
-[Docker](https://www.docker.com/)   
-[git](https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git)   
+Installed:
+[git](https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git)
 
 Optional:   
-[Docker-Compose](https://docs.docker.com/compose/install/)
 [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 [Maven 3.x](https://maven.apache.org/download.cgi)
-
 
 #### Steps
 
@@ -21,52 +17,26 @@ Optional:
 ```
 git clone git@github.com:FrankSeguel/ppt-acc-tutorial.git
 
+git checkout feature/HelloWorld!
+
 ```
 
-##### Build Docker image
+##### Build 
 ```
-docker build -t="ppt/tutorial" .
+mvn clean package install .
 ```
-Maven build will be executes during creation of the docker image.
-
->Note:if you run this command for first time it will take some time in order to download base image from [DockerHub](https://hub.docker.com/)
-
-##### Run Docker Container
+##### Run JAVA
 ```
-docker run --name tutorial -it --restart unless-stopped -d -p 8080:8080 ppt/tutorial
+java -jar target/ppt-acc-tutorial-0.0.1-SNAPSHOT.jar
 ```
 
 ##### Test application
 
 ```
-curl localhost:8080
+curl http://localhost:8080/ppt-acc-tutorial/hello
 ```
 
 response should be:
 ```
-Hello World
-```
-
-#####  Stop Docker Container:
-```
-docker stop `docker container ls | grep "tutorial:*" | awk '{ print $1 }'`
-```
-
-### Run with docker-compose 
-
-Build and start the container by running 
-
-```
-docker-compose up -d 
-```
-
-#### Test application with ***curl*** command
-
-```
-curl localhost:8080
-```
-
-response should be:
-```
-Hello World
+Hello, World!
 ```
